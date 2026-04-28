@@ -8,6 +8,7 @@
 		<li>
 			<?= htmlspecialchars($animal['nom']) ?>
 			(<?= htmlspecialchars($animal['age']) ?> ans)
+			— <a href="?controller=animal&action=show&id=<?= $animal['id'] ?>">Voir</a>
 		</li>
 	<?php endforeach; ?>
 	</ul>
