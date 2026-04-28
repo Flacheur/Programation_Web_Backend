@@ -1,10 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../Models/Animal.php';
-
 class AnimalController {
-	public function index() {
+
+	public function list() {
 		$animaux = Animal::all();
-		require __DIR__ . '/../Views/animals/list.php';
+		require __DIR__ . '/../Views/animal/list.php';
 	}
+	
 }

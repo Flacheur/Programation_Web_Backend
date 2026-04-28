@@ -1,11 +1,18 @@
 <?php
 
-require_once __DIR__ . '/../../config/Database.php';
-
 class Animal {
+
 	public static function all() {
+
 		$db = Database::getConnection();
-		$stmt = $db->query("SELECT * FROM animal");
+
+		$sql = "SELECT * FROM animal";
+		$stmt = $db->prepare($sql);
+		$stmt->execute();
+
 		return $stmt->fetchAll();
+
 	}
+	
 }
+// https://copilot.microsoft.com/shares/qMzLQvJTjAk4YunnFVxb8
