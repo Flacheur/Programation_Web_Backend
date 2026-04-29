@@ -4,7 +4,7 @@ class AnimalController {
 
 	public function list() {
 
-		$animals = Animal::all();
+		$animals = Animal::allWithRace();
 		$title = "Liste des animaux";
 
 		require __DIR__ . '/../../views/layout/header.php';
@@ -19,7 +19,8 @@ class AnimalController {
 			die("ID manquant");
 		}
 
-		$animal = Animal::find($_GET['id']);
+		$animal = Animal::findWithRace($_GET['id']);
+		$photos = Photo::allByAnimal($_GET['id']);
 
 		if (!$animal) {
 			die("Animal introuvable");
@@ -62,6 +63,7 @@ class AnimalController {
 		require __DIR__ . '/../../views/layout/header.php';
 		require __DIR__ . '/../../views/animal/create.php';
 		require __DIR__ . '/../../views/layout/footer.php';
+		require __DIR__ . '/../../views/animal/show.php';
 		
 	}
 

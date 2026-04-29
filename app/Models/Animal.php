@@ -51,4 +51,27 @@ class Animal {
 		$stmt->execute([$id]);
 	}
 
+	public static function findWithRace($id) {
+		$db = Database::getConnection();
+		$stmt = $db->prepare("
+			SELECT animal.*, race.nom AS race_nom, race.espece AS race_espece
+			FROM animal
+			JOIN race ON animal.race_id = race.id
+			WHERE animal.id = ?
+		");
+		$stmt->execute([$id]);
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+
+	public static function allWithRace() {
+		$db = Database::getConnection();
+		$stmt = $db->query("
+			SELECT animal.*, race.nom AS race_nom, race.espece AS race_espece
+			FROM animal
+			JOIN race ON animal.race_id = race.id
+			ORDER BY animal.nom
+		");
+		return $stmt->fetchAll(PDO::FETCH_ASSOC);
+	}
+
 }

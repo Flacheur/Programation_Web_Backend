@@ -12,6 +12,7 @@
 		<li>
 			<?= htmlspecialchars($animal['nom']) ?>
 			(<?= htmlspecialchars($animal['age']) ?> ans)
+			— <?= htmlspecialchars($animal['race_nom']) ?> (<?= htmlspecialchars($animal['race_espece']) ?>)
 			— <a href="?controller=animal&action=show&id=<?= $animal['id'] ?>">Voir</a>
 			— <a href="?controller=animal&action=update&id=<?= $animal['id'] ?>">Modifier</a>
 			— <a href="?controller=animal&action=delete&id=<?= $animal['id'] ?>"
