@@ -14,8 +14,15 @@
 		<option value="F" <?= $animal['sexe'] === 'F' ? 'selected' : '' ?>>Femelle</option>
 	</select>
 
-	<label>Race (ID) :</label>
-	<input type="number" name="race_id" value="<?= $animal['race_id'] ?>" required>
+	<label>Race :</label>
+	<select name="race_id" required>
+		<?php foreach ($races as $race): ?>
+			<option value="<?= $race['id'] ?>"
+				<?= $race['id'] == $animal['race_id'] ? 'selected' : '' ?>>
+				<?= htmlspecialchars($race['nom']) ?> (<?= htmlspecialchars($race['espece']) ?>)
+			</option>
+		<?php endforeach; ?>
+	</select>
 
 	<label>Description :</label>
 	<textarea name="description"><?= htmlspecialchars($animal['description']) ?></textarea>

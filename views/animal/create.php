@@ -14,8 +14,14 @@
 		<option value="F">Femelle</option>
 	</select>
 
-	<label>Race (ID) :</label>
-	<input type="number" name="race_id" required>
+	<label>Race :</label>
+	<select name="race_id" required>
+		<?php foreach ($races as $race): ?>
+			<option value="<?= $race['id'] ?>">
+				<?= htmlspecialchars($race['nom']) ?> (<?= htmlspecialchars($race['espece']) ?>)
+			</option>
+		<?php endforeach; ?>
+	</select>
 
 	<label>Description :</label>
 	<textarea name="description"></textarea>

@@ -57,6 +57,7 @@ class AnimalController {
 
 		// Sinon, afficher le formulaire
 		$title = "Ajouter un animal";
+		$races = Race::all();
 
 		require __DIR__ . '/../../views/layout/header.php';
 		require __DIR__ . '/../../views/animal/create.php';
@@ -105,6 +106,7 @@ class AnimalController {
 		}
 
 		$title = "Modifier " . $animal['nom'];
+		$races = Race::all();
 
 		require __DIR__ . '/../../views/layout/header.php';
 		require __DIR__ . '/../../views/animal/update.php';
