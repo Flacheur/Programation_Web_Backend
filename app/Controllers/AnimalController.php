@@ -112,4 +112,18 @@ class AnimalController {
 
 	}
 
+	public function delete() {
+	
+		if (!isset($_GET['id'])) {
+			die("ID manquant");
+		}
+
+		// Suppression
+		Animal::delete($_GET['id']);
+
+		// Redirection vers la liste
+		header("Location: ?controller=animal&action=list");
+		exit;
+	}
+
 }

@@ -1,7 +1,7 @@
 <h1>Liste des animaux</h1>
 
 <p>
-	<a href="?controller=animal&action=create">➕ Ajouter un animal</a>
+	<a href="?controller=animal&action=create">Ajouter un animal</a>
 </p>
 
 <?php if (empty($animals)): ?>
@@ -14,6 +14,8 @@
 			(<?= htmlspecialchars($animal['age']) ?> ans)
 			— <a href="?controller=animal&action=show&id=<?= $animal['id'] ?>">Voir</a>
 			— <a href="?controller=animal&action=update&id=<?= $animal['id'] ?>">Modifier</a>
+			— <a href="?controller=animal&action=delete&id=<?= $animal['id'] ?>"
+				onclick="return confirm('Supprimer cet animal ?');">Supprimer</a>
 		</li>
 	<?php endforeach; ?>
 	</ul>

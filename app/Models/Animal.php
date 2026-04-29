@@ -45,4 +45,10 @@ class Animal {
 		$stmt->execute([$nom, $age, $sexe, $race_id, $description, $statut, $date_arrivee, $id]);
 	}
 
+	public static function delete($id) {
+		$db = Database::getConnection();
+		$stmt = $db->prepare("DELETE FROM animal WHERE id = ?");
+		$stmt->execute([$id]);
+	}
+
 }
