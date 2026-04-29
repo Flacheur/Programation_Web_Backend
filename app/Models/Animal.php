@@ -26,4 +26,23 @@ class Animal {
 		return $stmt->fetch();
 	}
 
+	public static function create($nom, $age, $sexe, $race_id, $description, $statut, $date_arrivee) {
+		$db = Database::getConnection();
+		$stmt = $db->prepare("
+			INSERT INTO animal (nom, age, sexe, race_id, description, statut, date_arrivee)
+			VALUES (?, ?, ?, ?, ?, ?, ?)
+		");
+		$stmt->execute([$nom, $age, $sexe, $race_id, $description, $statut, $date_arrivee]);
+	}
+
+	public static function update($id, $nom, $age, $sexe, $race_id, $description, $statut, $date_arrivee) {
+		$db = Database::getConnection();
+		$stmt = $db->prepare("
+			UPDATE animal
+			SET nom = ?, age = ?, sexe = ?, race_id = ?, description = ?, statut = ?, date_arrivee = ?
+			WHERE id = ?
+		");
+		$stmt->execute([$nom, $age, $sexe, $race_id, $description, $statut, $date_arrivee, $id]);
+	}
+
 }
